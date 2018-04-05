@@ -7,16 +7,17 @@ public class StudentProject {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        Student[] students = new Student[3];
+        for (int i = 0; i < students.length; i++) {
+            students[i] = createStudent();
+        }
         System.out.println("Number of Students: " + Student.getNumStudents());
-        Student student1 = new Student("Flintstone", " Fred", 789456123);
-        Student student2 = new Student("Butterfly", " Star", 123456789);
-        Student student3 = new Student("Barnes", " Bucky", 123456123);
-        student1.addPoints(90);
-        student2.addPoints(100);
-        student3.addPoints(50);
-        displayStudent(student1);
-        displayStudent(student2);
-        displayStudent(student3);
+        students[0].addPoints(90);
+        students[1].addPoints(890);
+        students[2].addPoints(50);
+        for (Student s : students) {
+            displayStudent(s);
+        }
     }
 
     public static void displayStudent(Student s) {
