@@ -1,39 +1,61 @@
 package mcmurchie;
 
-import java.util.Scanner;
+public class Student {
 
-public class StudentProject {
+    final public int SID;
+    private String lastName;
+    private String firstName;
+    private int points = 0;
+    private static int numStudents;
 
-    static Scanner scanner = new Scanner(System.in);
-
-    public static void main(String[] args) {
-        Student[] students = new Student[3];
-        for (int i = 0; i < students.length; i++) {
-            students[i] = createStudent();
-        }
-        System.out.println("Number of Students: " + Student.getNumStudents());
-        students[0].addPoints(90);
-        students[1].addPoints(890);
-        students[2].addPoints(50);
-        for (Student s : students) {
-            displayStudent(s);
-        }
+    public Student() {
+        SID = 0;
+        numStudents++;
     }
 
-    public static void displayStudent(Student s) {
-        System.out.println(s.getName() + " has " + s.getPoints()
-                + " points");
+    public Student(int studentID) {
+        SID = studentID;
+        numStudents++;
     }
 
-    public static Student createStudent() {
-        System.out.println("SID: ");
-        int sid = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Last name: ");
-        String lastName = scanner.nextLine();
-        System.out.println("First name: ");
-        String firstName = scanner.nextLine();
-        Student s = new Student(lastName, firstName, sid);
-        return s;
+    public Student(String lastName, String firstName, int studentID) {
+        SID = studentID;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        numStudents++;
+
     }
+
+    public String getName() {
+        return lastName + "," + firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void addPoints(int newPoints) {
+        points += newPoints;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public static int getNumStudents() {
+        return numStudents;
+    }
+
 }
